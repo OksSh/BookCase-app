@@ -25,6 +25,5 @@ yarn-error.log*
 # public
 /public/assets
 /public/assets/favicon.ico
-/components/HomePage/home-page.png
-/components/Header/logo.png
-/components/Header/logo-light.png
+/src/components/Header/logo.png
+/src/components/Header/logo-light.png
