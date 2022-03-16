@@ -16,9 +16,9 @@
 .bookCard_title {
   font-family: Lato-Regular;
   font-size: 22px;
-  line-height: 44px;
   color: #000000;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .bookCard_author {

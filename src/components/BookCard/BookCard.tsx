@@ -1,7 +1,13 @@
 import { IBookCardProps } from '../../redux/reducers/booksReducer';
 import styles from '../BookCard/BookCard.module.css';
 
-export const BookCard = ({ title, author, id }: IBookCardProps) => {
+interface IProps {
+  title: string;
+  author: string;
+  id: string;
+}
+
+export const BookCard = ({ title, author, id }: IProps) => {
   return (
     <>
       <div id={id} className={styles.bookCard}>

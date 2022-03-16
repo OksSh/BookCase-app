@@ -4,6 +4,7 @@ export interface IBookCardProps {
   title: string;
   author: string;
   id: string;
+  isbns: [{ isbn10: string; isbn13: string }];
 }
 
 export interface IBooksState {

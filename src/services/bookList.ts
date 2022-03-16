@@ -14,8 +14,13 @@ export const getBooksList = (offset: number, length: number) => {
     if (response.ok !== true) {
       throw result;
     }
+    console.log(result);
+    const books = result.results.map((item: any) => ({
+      id: 'id' + Math.random().toString(16).slice(2),
+      ...item,
+    }));
 
-    dispatch(booksList(result.results));
+    dispatch(booksList(books));
     dispatch(booksLength(result.num_results));
   };
 };

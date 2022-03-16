@@ -10,38 +10,31 @@ import { Preloader } from '../Preloader/Preloader';
 import { SliderToggle } from '../SliderToggle/SliderToggle';
 import { Title } from '../Title/Title';
 
-export interface IBookCard {
-  title: string;
-  author: string;
-  isbns: [{ isbn10: string; isbn13: string }];
-}
-
 export const BooksList = () => {
   const books = useSelector((state: IState) => state.booksReducer.books);
   const dispatch = useDispatch();
   const offset = useSelector((state: IState) => state.booksReducer.booksOffset);
   const length = useSelector((state: IState) => state.booksReducer.booksLength);
-  console.log(offset, length);
 
   useEffect(() => {
     dispatch(getBooksList(offset, length));
   }, [offset, length]);
 
-  const onClickLeft = () => {
+  const onClickLeft = useCallback(() => {
     if (offset > 20) {
       const newOffset = offset - 20;
       console.log(offset, newOffset);
       dispatch(booksOffset(newOffset));
     }
-  };
+  }, [offset]);
 
-  const onClickRight = () => {
+  const onClickRight = useCallback(() => {
     if (length > offset) {
       const newOffset = offset + 20;
       console.log(offset, newOffset);
       dispatch(booksOffset(newOffset));
     }
-  };
+  }, [length, offset]);
 
   return (
     <div className={styles.bookList}>
@@ -55,9 +48,8 @@ export const BooksList = () => {
             books.map((item: IBookCardProps) => {
               return (
                 <BookCard
-                  // id={item.isbns[0].isbn13}
-                  id={item.title}
-                  key={item.title}
+                  id={item.id}
+                  key={item.id}
                   title={item.title}
                   author={item.author}
                 />
