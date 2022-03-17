@@ -10,11 +10,9 @@ export const SliderToggle = ({
   onClickRight,
 }: ISliderToogleProps) => {
   return (
-    <>
-      <div className={styles.sliderToggle}>
-        <img src='/assets/img/left.png' onClick={onClickLeft} />
-        <img src='/assets/img/right.png' onClick={onClickRight} />
-      </div>
-    </>
+    <div className={styles.sliderToggle}>
+      <img src='/assets/img/left.png' onClick={onClickLeft} />
+      <img src='/assets/img/right.png' onClick={onClickRight} />
+    </div>
   );
 };

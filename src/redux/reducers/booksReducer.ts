@@ -4,7 +4,6 @@ export interface IBookCardProps {
   title: string;
   author: string;
   id: string;
-  isbns: [{ isbn10: string; isbn13: string }];
 }
 
 export interface IBooksState {
@@ -13,7 +12,7 @@ export interface IBooksState {
   booksLength: number;
 }
 
-const defaultStateBooks: IBooksState = {
+export const defaultStateBooks: IBooksState = {
   books: [],
   booksOffset: 20,
   booksLength: 0,
@@ -21,15 +20,11 @@ const defaultStateBooks: IBooksState = {
 
 export const booksReducer = (state = defaultStateBooks, action: any) => {
   if (action.type === ACTIONS.GET_BOOKS_LIST) {
-    return { ...state, books: action.books };
+    return { ...state, books: action.books, booksLength: action.booksLength };
   }
 
-  if (action.type === ACTIONS.BOOKS_OFFSET) {
+  if (action.type === ACTIONS.SET_BOOKS_OFFSET) {
     return { ...state, booksOffset: action.offset };
-  }
-
-  if (action.type === ACTIONS.BOOKS_LENGTH) {
-    return { ...state, booksLength: action.length };
   }
 
   return state;

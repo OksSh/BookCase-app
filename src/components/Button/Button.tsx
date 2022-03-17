@@ -6,10 +6,8 @@ interface IButtonProps {
 
 export const Button = ({ onClick, text }: IButtonProps) => {
   return (
-    <>
-      <button onClick={onClick} className={styles.button}>
-        {text}
-      </button>
-    </>
+    <button onClick={onClick} className={styles.button}>
+      {text}
+    </button>
   );
 };

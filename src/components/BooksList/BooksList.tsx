@@ -1,11 +1,12 @@
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { booksOffset } from '../../redux/actions/booksAction';
+import { setBooksOffset } from '../../redux/actions/booksAction';
 import { IBookCardProps } from '../../redux/reducers/booksReducer';
 import { IState } from '../../redux/store';
-import { getBooksList } from '../../services/bookList';
+import { getBooks } from '../../services/bookList';
 import { BookCard } from '../BookCard/BookCard';
 import styles from '../BooksList/BooksList.module.css';
+import { Input } from '../Input/Input';
 import { Preloader } from '../Preloader/Preloader';
 import { SliderToggle } from '../SliderToggle/SliderToggle';
 import { Title } from '../Title/Title';
@@ -17,22 +18,21 @@ export const BooksList = () => {
   const length = useSelector((state: IState) => state.booksReducer.booksLength);
 
   useEffect(() => {
-    dispatch(getBooksList(offset, length));
+    dispatch(getBooks(offset, length));
   }, [offset, length]);
 
   const onClickLeft = useCallback(() => {
     if (offset > 20) {
       const newOffset = offset - 20;
-      console.log(offset, newOffset);
-      dispatch(booksOffset(newOffset));
+      dispatch(setBooksOffset(newOffset));
     }
   }, [offset]);
 
   const onClickRight = useCallback(() => {
     if (length > offset) {
+      const books: IBookCardProps[] = [];
       const newOffset = offset + 20;
-      console.log(offset, newOffset);
-      dispatch(booksOffset(newOffset));
+      dispatch(setBooksOffset(newOffset));
     }
   }, [length, offset]);
 
@@ -42,6 +42,7 @@ export const BooksList = () => {
         <div className={styles.bookList_titleWrapper}>
           <Title text='Books' />
           <SliderToggle onClickLeft={onClickLeft} onClickRight={onClickRight} />
+          <Input name='Search' />
         </div>
         <div className={styles.wrapper}>
           {books.length >= 1 ? (
