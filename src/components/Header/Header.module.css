@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.header {
+  background-color: #191919;
+}
+
+.header_logo {
+  height: 50px;
+}
+
+.header_links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_link {
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.header_activeLink {
+  color: #996b60;
+}

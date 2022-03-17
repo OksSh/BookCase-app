@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #996b60;
+}
+
+.homePage {
+  min-height: calc(100vh - 138px);
+}
+
+.homePage_image {
+  height: 810px;
+  width: 660px;
+}
+
+.homePage_title {
+  max-width: 660px;
+  color: #ffffff;
+  padding: 0 40px;
+}
+
+.homePage_title p {
+  font-family: Roboto;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.homePage_title h1 {
+  padding: 40px 0;
+  font-family: Lato-Regular;
+  font-size: 64px;
+  line-height: 96px;
+}
