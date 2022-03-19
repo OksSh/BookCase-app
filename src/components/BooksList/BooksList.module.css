@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.bookList_titleWrapper {
+.bookList_headerWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,4 +29,14 @@
 
 .bookList_preloader {
   margin: 0 auto;
+}
+
+.bookList_title {
+  display: flex;
+  align-items: center;
+  flex: 2;
+}
+
+.bookList_slider {
+  flex: 1.5;
 }

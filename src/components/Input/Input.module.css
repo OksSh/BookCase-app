@@ -5,3 +5,7 @@
   box-sizing: border-box;
   border-radius: 0px;
 }
+
+.input label {
+  color: #000000;
+}

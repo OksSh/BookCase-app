@@ -2,15 +2,14 @@ import { Dispatch } from 'redux';
 import { getBooksList } from '../redux/actions/booksAction';
 import { key } from '../services/constants';
 
-export const getBooks = (
+export const getSearchBooksByAuthor = (
+  search: string,
   offset: number,
-  length: number,
-  author: string,
-  title: string
+  length: number
 ) => {
   return async (dispatch: Dispatch) => {
     const response = await fetch(
-      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&offset=${offset}$author=${author}$title=${title}`,
+      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&offset=${offset}&author=${search}`,
       { method: 'GET', headers: { 'Content-Type': 'application/json' } }
     );
 

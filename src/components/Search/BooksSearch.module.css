@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.booksSearch_image {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.booksSearch_params {
+  display: flex;
+  justify-content: start;
+}
+
+.booksSearch_params p {
+  padding: 0 10px;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 28px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.booksSearch_params p:hover {
+  color: #996b60;
+}
+
+.booksSearch_params_isActive {
+  text-decoration: underline;
+}

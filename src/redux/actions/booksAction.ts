@@ -12,3 +12,15 @@ export const getBooksList = (books: IBooksState, booksLength: IBooksState) => {
 export const setBooksOffset = (value: number) => {
   return { type: ACTIONS.SET_BOOKS_OFFSET, offset: value };
 };
+
+export const setBackBooks = (books: IBooksState) => {
+  return { type: ACTIONS.SET_BACK_BOOKS, backBooks: books };
+};
+
+export const setSearchAuthor = (value: string) => {
+  return { type: ACTIONS.SET_SEARCH_AUTHOR, searchAuthor: value };
+};
+
+export const setSearchTitle = (value: string) => {
+  return { type: ACTIONS.SET_SEARCH_TITLE, searchTitle: value };
+};
