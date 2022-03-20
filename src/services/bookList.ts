@@ -2,15 +2,10 @@ import { Dispatch } from 'redux';
 import { getBooksList } from '../redux/actions/booksAction';
 import { key } from '../services/constants';
 
-export const getBooks = (
-  offset: number,
-  length: number,
-  author: string,
-  title: string
-) => {
+export const getBooks = (offset: number) => {
   return async (dispatch: Dispatch) => {
     const response = await fetch(
-      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&offset=${offset}$author=${author}$title=${title}`,
+      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&offset=${offset}`,
       { method: 'GET', headers: { 'Content-Type': 'application/json' } }
     );
 
@@ -26,6 +21,60 @@ export const getBooks = (
         ...item,
       })
     );
+
+    dispatch(getBooksList(books, result.num_results));
+  };
+};
+
+export const getSearchBooksByAuthor = (author: string, offset: number) => {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(
+      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&author=${author}&offset=${offset}`,
+      { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+    );
+
+    console.log(response);
+
+    const result = await response.json();
+
+    if (response.ok !== true) {
+      throw result;
+    }
+
+    const books = result.results.map(
+      (item: { title: string; author: string }) => ({
+        id: 'id' + Math.random().toString(16).slice(2),
+        ...item,
+      })
+    );
+    console.log(books);
+
+    dispatch(getBooksList(books, result.num_results));
+  };
+};
+
+export const getSearchBooksByTitle = (title: string) => {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(
+      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&title=${title}`,
+      { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+    );
+
+    console.log(response);
+
+    const result = await response.json();
+
+    if (response.ok !== true) {
+      throw result;
+    }
+
+    const books = result.results.map(
+      (item: { title: string; author: string }) => ({
+        id: 'id' + Math.random().toString(16).slice(2),
+        ...item,
+      })
+    );
+    console.log(books);
 
     dispatch(getBooksList(books, result.num_results));
   };

@@ -24,3 +24,7 @@ export const setSearchAuthor = (value: string) => {
 export const setSearchTitle = (value: string) => {
   return { type: ACTIONS.SET_SEARCH_TITLE, searchTitle: value };
 };
+
+export const setSearchWord = (value: number) => {
+  return { type: ACTIONS.SET_SEARCH_OFFSET, searchOffset: value };
+};

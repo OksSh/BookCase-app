@@ -13,6 +13,7 @@ export interface IBooksState {
   backBooks: IBookCardProps[];
   searchAuthor: string;
   searchTitle: string;
+  searchOffset: number;
 }
 
 export const defaultStateBooks: IBooksState = {
@@ -22,6 +23,7 @@ export const defaultStateBooks: IBooksState = {
   backBooks: [],
   searchAuthor: '',
   searchTitle: '',
+  searchOffset: 20,
 };
 
 export const booksReducer = (state = defaultStateBooks, action: any) => {
@@ -43,6 +45,10 @@ export const booksReducer = (state = defaultStateBooks, action: any) => {
 
   if (action.type === ACTIONS.SET_SEARCH_TITLE) {
     return { ...state, searchTitle: action.searchTitle };
+  }
+
+  if (action.type === ACTIONS.SET_SEARCH_OFFSET) {
+    return { ...state, searchWord: action.searchOffset };
   }
 
   return state;

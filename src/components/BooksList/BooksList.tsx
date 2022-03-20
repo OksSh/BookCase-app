@@ -5,7 +5,6 @@ import { IState } from '../../redux/store';
 import { getBooks } from '../../services/bookList';
 import { BookCard } from '../BookCard/BookCard';
 import styles from '../BooksList/BooksList.module.css';
-import { Input } from '../Input/Input';
 import { Preloader } from '../Preloader/Preloader';
 import { Spinner } from '../Spinner/Spinner';
 import { SliderButtons } from '../SliderButtons/SliderButtons';
@@ -26,8 +25,8 @@ export const BooksList = () => {
   const title = useSelector((state: IState) => state.booksReducer.searchTitle);
 
   useEffect(() => {
-    dispatch(getBooks(offset, length, author, title));
-  }, [offset, length]);
+    dispatch(getBooks(offset));
+  }, [offset]);
 
   return (
     <div className={styles.bookList}>

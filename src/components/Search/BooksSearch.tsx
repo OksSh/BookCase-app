@@ -1,16 +1,33 @@
-import { ChangeEvent, useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setSearchAuthor,
   setSearchTitle,
+  setSearchWord,
 } from '../../redux/actions/booksAction';
 import styles from '../Search/BooksSearch.module.css';
 import { Input } from '../Input/Input';
+import { IState } from '../../redux/store';
+import {
+  getSearchBooksByAuthor,
+  getSearchBooksByTitle,
+} from '../../services/bookList';
 
 export const BooksSearch = () => {
   const [searchParam, setSearchParam] = useState<string>('author');
-  const [search, setSearch] = useState<string>('');
+  const author = useSelector(
+    (state: IState) => state.booksReducer.searchAuthor
+  );
+  const title = useSelector((state: IState) => state.booksReducer.searchTitle);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    getSearchBooksByAuthor(author);
+  }, [author]);
+
+  useEffect(() => {
+    getSearchBooksByTitle(title);
+  }, [title]);
 
   const onClickAuthor = useCallback(() => {
     setSearchParam('author');
@@ -23,41 +40,52 @@ export const BooksSearch = () => {
   const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
-      setSearch(value);
+      if (searchParam === 'author') {
+        dispatch(setSearchAuthor(value));
+      }
+      if (searchParam === 'title') {
+        dispatch(setSearchTitle(value));
+      }
     },
-    [search]
+    [searchParam, author, title]
   );
 
   const onKeyDown = useCallback(
     (event) => {
       if (event.key === 'Enter') {
         if (searchParam === 'author') {
-          dispatch(setSearchAuthor(search));
-          console.log(search);
+          dispatch(setSearchTitle(''));
+          console.log(searchParam, author);
+          dispatch(getSearchBooksByAuthor(author));
         }
         if (searchParam === 'title') {
-          dispatch(setSearchTitle(search));
+          dispatch(setSearchAuthor(''));
+          console.log(searchParam, title);
+          dispatch(getSearchBooksByTitle(title));
         }
       }
     },
-    [search]
+    [searchParam, author, title]
   );
 
   const enterSearchParam = useCallback(() => {
     if (searchParam === 'author') {
-      dispatch(setSearchAuthor(search));
-      console.log(search);
+      dispatch(setSearchTitle(''));
+      console.log(searchParam, author);
+      dispatch(getSearchBooksByAuthor(author));
     }
     if (searchParam === 'title') {
-      dispatch(setSearchTitle(search));
+      dispatch(setSearchAuthor(''));
+      console.log(searchParam, title);
+      dispatch(getSearchBooksByTitle(title));
     }
-  }, [search]);
+  }, [searchParam, author, title]);
 
   return (
     <div className={styles.booksSearch}>
       <div className={styles.wrapper}>
         <Input
-          value={search}
+          value={searchParam == 'author' ? `${author}` : `${title}`}
           placeholder={
             searchParam == 'author' ? 'Enter the author' : 'Enter the title'
           }
