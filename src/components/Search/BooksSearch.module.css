@@ -11,9 +11,10 @@
 .booksSearch_params {
   display: flex;
   justify-content: start;
+  margin-left: 40px;
 }
 
-.booksSearch_params p {
+.booksSearch_params_text {
   padding: 0 10px;
   font-family: Roboto;
   font-size: 14px;
@@ -22,10 +23,13 @@
   cursor: pointer;
 }
 
-.booksSearch_params p:hover {
+.booksSearch_params_isActive {
+  cursor: default;
   color: #996b60;
+  text-decoration: underline;
 }
 
-.booksSearch_params_isActive {
-  text-decoration: underline;
+.bookSearch_clear {
+  margin-right: 10px;
+  cursor: pointer;
 }

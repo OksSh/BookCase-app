@@ -15,7 +15,7 @@ export const SliderButtonRight = ({
     <svg
       onClick={onClickRight}
       className={
-        offset <= length
+        offset < length
           ? `${styles.sliderButtonLeft} ${styles.isActive}`
           : `${styles.sliderButtonLeft}`
       }

@@ -1,14 +1,15 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  setBooksOffset,
   setSearchAuthor,
   setSearchTitle,
-  setSearchWord,
 } from '../../redux/actions/booksAction';
 import styles from '../Search/BooksSearch.module.css';
 import { Input } from '../Input/Input';
 import { IState } from '../../redux/store';
 import {
+  getBooks,
   getSearchBooksByAuthor,
   getSearchBooksByTitle,
 } from '../../services/bookList';
@@ -19,6 +20,7 @@ export const BooksSearch = () => {
     (state: IState) => state.booksReducer.searchAuthor
   );
   const title = useSelector((state: IState) => state.booksReducer.searchTitle);
+  const offset = useSelector((state: IState) => state.booksReducer.booksOffset);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,6 +30,10 @@ export const BooksSearch = () => {
   useEffect(() => {
     getSearchBooksByTitle(title);
   }, [title]);
+
+  useEffect(() => {
+    dispatch(setBooksOffset(20));
+  }, [title, author]);
 
   const onClickAuthor = useCallback(() => {
     setSearchParam('author');
@@ -55,12 +61,10 @@ export const BooksSearch = () => {
       if (event.key === 'Enter') {
         if (searchParam === 'author') {
           dispatch(setSearchTitle(''));
-          console.log(searchParam, author);
           dispatch(getSearchBooksByAuthor(author));
         }
         if (searchParam === 'title') {
           dispatch(setSearchAuthor(''));
-          console.log(searchParam, title);
           dispatch(getSearchBooksByTitle(title));
         }
       }
@@ -71,19 +75,29 @@ export const BooksSearch = () => {
   const enterSearchParam = useCallback(() => {
     if (searchParam === 'author') {
       dispatch(setSearchTitle(''));
-      console.log(searchParam, author);
       dispatch(getSearchBooksByAuthor(author));
     }
     if (searchParam === 'title') {
       dispatch(setSearchAuthor(''));
-      console.log(searchParam, title);
       dispatch(getSearchBooksByTitle(title));
     }
   }, [searchParam, author, title]);
 
+  const onClearSearch = useCallback(() => {
+    dispatch(setSearchAuthor(''));
+    dispatch(setSearchTitle(''));
+    dispatch(setBooksOffset(20));
+    dispatch(getBooks(offset));
+  }, [offset]);
+
   return (
     <div className={styles.booksSearch}>
       <div className={styles.wrapper}>
+        <div onClick={onClearSearch} className={styles.bookSearch_clear}>
+          <svg fill='#000000' viewBox='0 0 24 24' width='24px' height='24px'>
+            <path d='M 2 2 L 4.9394531 4.9394531 C 3.1262684 6.7482143 2 9.2427079 2 12 C 2 17.514 6.486 22 12 22 C 17.514 22 22 17.514 22 12 C 22 6.486 17.514 2 12 2 L 12 4 C 16.411 4 20 7.589 20 12 C 20 16.411 16.411 20 12 20 C 7.589 20 4 16.411 4 12 C 4 9.7940092 4.9004767 7.7972757 6.3496094 6.3496094 L 9 9 L 9 2 L 2 2 z' />
+          </svg>
+        </div>
         <Input
           value={searchParam == 'author' ? `${author}` : `${title}`}
           placeholder={
@@ -108,7 +122,9 @@ export const BooksSearch = () => {
         <p
           onClick={onClickAuthor}
           className={
-            searchParam == 'author' ? styles.booksSearch_params_isActive : ''
+            searchParam == 'author'
+              ? `${styles.booksSearch_params_isActive} ${styles.booksSearch_params_text}`
+              : styles.booksSearch_params_text
           }
         >
           author
@@ -116,7 +132,9 @@ export const BooksSearch = () => {
         <p
           onClick={onClickTitle}
           className={
-            searchParam == 'title' ? styles.booksSearch_params_isActive : ''
+            searchParam == 'title'
+              ? `${styles.booksSearch_params_isActive} ${styles.booksSearch_params_text}`
+              : styles.booksSearch_params_text
           }
         >
           title

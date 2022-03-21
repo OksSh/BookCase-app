@@ -26,14 +26,12 @@ export const getBooks = (offset: number) => {
   };
 };
 
-export const getSearchBooksByAuthor = (author: string, offset: number) => {
+export const getSearchBooksByAuthor = (author: string) => {
   return async (dispatch: Dispatch) => {
     const response = await fetch(
-      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&author=${author}&offset=${offset}`,
+      `https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=${key}&author=${author}`,
       { method: 'GET', headers: { 'Content-Type': 'application/json' } }
     );
-
-    console.log(response);
 
     const result = await response.json();
 
@@ -47,9 +45,8 @@ export const getSearchBooksByAuthor = (author: string, offset: number) => {
         ...item,
       })
     );
-    console.log(books);
 
-    dispatch(getBooksList(books, result.num_results));
+    dispatch(getBooksList(books, 20));
   };
 };
 
@@ -74,8 +71,7 @@ export const getSearchBooksByTitle = (title: string) => {
         ...item,
       })
     );
-    console.log(books);
 
-    dispatch(getBooksList(books, result.num_results));
+    dispatch(getBooksList(books, 20));
   };
 };

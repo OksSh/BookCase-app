@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IBookCardProps } from '../../redux/reducers/booksReducer';
+import { IBookCardProps, IBooksState } from '../../redux/reducers/booksReducer';
 import { IState } from '../../redux/store';
 import { getBooks } from '../../services/bookList';
 import { BookCard } from '../BookCard/BookCard';
@@ -15,18 +15,15 @@ export const BooksList = () => {
   const books = useSelector((state: IState) => state.booksReducer.books);
   const dispatch = useDispatch();
   const offset = useSelector((state: IState) => state.booksReducer.booksOffset);
-  const length = useSelector((state: IState) => state.booksReducer.booksLength);
-  const backBooks = useSelector(
-    (state: IState) => state.booksReducer.backBooks
-  );
-  const author = useSelector(
-    (state: IState) => state.booksReducer.searchAuthor
-  );
-  const title = useSelector((state: IState) => state.booksReducer.searchTitle);
+  const [backBooks, setBackBooks] = useState<IBookCardProps[]>([]);
 
   useEffect(() => {
     dispatch(getBooks(offset));
   }, [offset]);
+
+  useEffect(() => {
+    setBackBooks(books);
+  }, [books]);
 
   return (
     <div className={styles.bookList}>

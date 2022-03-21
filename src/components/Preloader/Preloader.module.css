@@ -1,5 +1,15 @@
+.wrapper {
+  position: relative;
+  min-width: 100%;
+  min-height: calc(100vh - 200px);
+  z-index: 100;
+}
+
 .preloader {
   display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .preloader_circle1 {
