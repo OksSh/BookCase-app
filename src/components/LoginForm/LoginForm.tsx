@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import styles from '../LoginForm/LoginForm.module.css';
 import { Title } from '../Title/Title';
 import { validationService } from '../../services/validation';
 import { userLogin } from '../../services/userLogin';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { IState } from '../../redux/store';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
@@ -14,22 +15,33 @@ export const LoginForm = () => {
   const [errors, setErrors] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const history = useHistory();
+  const isLogin = useSelector((state: IState) => state.userReducer.isLogin);
 
-  useEffect(() => history.push('/'));
+  useEffect(() => {
+    if (isLogin) {
+      history.push('/');
+    }
+  });
 
-  const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setEmail(value);
-    const error = validationService.validateEmail(value);
-    setErrors({ ...errors, email: error });
-  };
+  const onChangeEmail = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setEmail(value);
+      const error = validationService.validateEmail(value);
+      setErrors((errors) => ({ ...errors, email: error }));
+    },
+    []
+  );
 
-  const onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setPassword(value);
-    const error = validationService.validatePassword(value);
-    setErrors({ ...errors, password: error });
-  };
+  const onChangePassword = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setPassword(value);
+      const error = validationService.validatePassword(value);
+      setErrors((errors) => ({ ...errors, password: error }));
+    },
+    []
+  );
 
   const onClick = () => {
     const emailError = validationService.validateEmail(email);
@@ -39,27 +51,44 @@ export const LoginForm = () => {
     const values = Object.values(error);
     const isValid = values.every((item) => item === '');
 
-    if (isValid) {
-      dispatch(userLogin(email, password));
-    }
+    // if (isValid) {
+    //   dispatch(userLogin(email, password));
+    // }
   };
 
-  const error = errors ? Object.values(errors).flat(Infinity) : '';
+  const onClickRegistration = () => {
+    history.push('/registration');
+  };
 
   return (
     <div className={styles.loginForm}>
       <div className={styles.container}>
-        <Title text='Login' />
-        <div className={styles.loginForm_items}>
-          <Input onChange={onChangeEmail} name='Email' />
-          <Input onChange={onChangePassword} name='Password' />
-          <Button text='Login' onClick={onClick} />
-          {/* <p>
-            If you don't have account you can{' '}
-            <a href='/registration'>registration</a>
-          </p> */}
+        <div className={styles.wrapper}>
+          <Title text='Login' />
+          <div className={styles.loginForm_items}>
+            <div>
+              <Input
+                error={errors.email}
+                onChange={onChangeEmail}
+                name='Email'
+              />
+            </div>
+            <div>
+              <Input
+                error={errors.password}
+                onChange={onChangePassword}
+                name='Password'
+              />
+            </div>
+            <div>
+              <Button text='Login' onClick={onClick} />
+            </div>
+            <p className={styles.loginForm_items_text}>
+              If you dont have account you can
+              <span onClick={onClickRegistration}>registration</span>
+            </p>
+          </div>
         </div>
-        <p>{error}</p>
       </div>
     </div>
   );

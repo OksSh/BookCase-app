@@ -6,10 +6,10 @@ import { IUserState, userReducer } from './reducers/userReducer';
 
 export interface IState {
   booksReducer: IBooksState;
-  // userReducer: IUserState;
+  userReducer: IUserState;
 }
 
 export const store = createStore(
-  combineReducers({ booksReducer }),
+  combineReducers({ booksReducer, userReducer }),
   composeWithDevTools(applyMiddleware(thunk))
 );

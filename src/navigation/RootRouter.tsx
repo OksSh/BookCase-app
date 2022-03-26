@@ -15,8 +15,8 @@ export const RootRouter = () => {
         <Route path='/' component={HomePage} exact />
         <Route path='/books' component={BooksList} exact />
         <Route path='/bestsellers' component={BestsellerPage} exact />
-        {/* <Route path='/login' component={LoginForm} exact />
-        <Route path='/registration' component={RegistrationForm} exact /> */}
+        <Route path='/login' component={LoginForm} exact />
+        <Route path='/registration' component={RegistrationForm} exact />
       </Switch>
       <Footer />
     </BrowserRouter>

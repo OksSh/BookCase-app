@@ -7,6 +7,8 @@ interface IInputProps {
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   value?: string;
   placeholder?: string;
+  error?: string;
+  type?: string;
 }
 
 export const Input = ({
@@ -15,17 +17,24 @@ export const Input = ({
   onKeyDown,
   value,
   placeholder,
+  error,
+  type,
 }: IInputProps) => {
   return (
     <div className={styles.input}>
-      <label htmlFor={name}>{name}</label>
+      <label className={styles.input_label} htmlFor={name}>
+        {name}
+      </label>
       <input
+        type={type}
+        className={`${styles.form_input} ${error ? styles.errorInput : null}`}
         value={value}
         onKeyDown={onKeyDown}
         onChange={onChange}
         id={name}
         placeholder={placeholder}
       ></input>
+      {error ? <p className={styles.errorTitle}>{error}</p> : null}
     </div>
   );
 };
