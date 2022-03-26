@@ -1,4 +1,4 @@
-import { IBooksState } from '../reducers/booksReducer';
+import { IBestsellerBooks, IBooksState } from '../reducers/booksReducer';
 import { ACTIONS } from './constants';
 
 export const getBooksList = (books: IBooksState, booksLength: number) => {
@@ -19,4 +19,15 @@ export const setSearchAuthor = (value: string) => {
 
 export const setSearchTitle = (value: string) => {
   return { type: ACTIONS.SET_SEARCH_TITLE, searchTitle: value };
+};
+
+export const getBestsellerBookList = (
+  books: IBestsellerBooks,
+  date: string
+) => {
+  return {
+    type: ACTIONS.GET_BESTSELLER_BOOK_LIST,
+    bestsellerBooks: books,
+    publishedDate: date,
+  };
 };

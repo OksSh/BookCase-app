@@ -1,11 +1,21 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
 .input input {
   height: 35px;
   padding-left: 10px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 0px;
+  max-width: 250px;
+  margin-bottom: 20px;
 }
 
 .input label {
   color: #000000;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 28px;
 }

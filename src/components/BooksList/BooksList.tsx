@@ -15,15 +15,20 @@ export const BooksList = () => {
   const books = useSelector((state: IState) => state.booksReducer.books);
   const dispatch = useDispatch();
   const offset = useSelector((state: IState) => state.booksReducer.booksOffset);
-  const [backBooks, setBackBooks] = useState<IBookCardProps[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const author = useSelector(
+    (state: IState) => state.booksReducer.searchAuthor
+  );
+  const title = useSelector((state: IState) => state.booksReducer.searchTitle);
 
   useEffect(() => {
+    setIsLoading(true);
     dispatch(getBooks(offset));
-  }, [offset]);
+  }, [offset, author, title]);
 
   useEffect(() => {
-    setBackBooks(books);
-  }, [books]);
+    setIsLoading(false);
+  }, [books, setIsLoading]);
 
   return (
     <div className={styles.bookList}>
@@ -31,9 +36,7 @@ export const BooksList = () => {
         <div className={styles.bookList_headerWrapper}>
           <div className={styles.bookList_title}>
             <Title text='Books' />
-            {JSON.stringify(books) === JSON.stringify(backBooks) ? null : (
-              <Spinner />
-            )}
+            {isLoading ? <Spinner /> : null}
           </div>
           <div className={styles.bookList_slider}>
             <SliderButtons />
@@ -46,6 +49,7 @@ export const BooksList = () => {
               return (
                 <BookCard
                   id={item.id}
+                  text={item.description}
                   key={item.id}
                   title={item.title}
                   author={item.author}

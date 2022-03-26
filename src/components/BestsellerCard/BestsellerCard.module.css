@@ -1,0 +1,65 @@
+.bestsellerCard {
+  max-width: 250px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.bestsellerCard_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.bestsellerCard_image {
+  width: 240px;
+  height: 360px;
+}
+
+.bestsellerCard_title {
+  font-family: Lato-Regular;
+  font-size: 22px;
+  color: #000000;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.bestsellerCard_text {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #000000;
+}
+
+.bestsellerCard_author {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+
+.bestsellerCard_links {
+  display: flex;
+  flex-direction: column;
+}
+
+.bestsellerCard_link {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 5px 0px;
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  width: 240px;
+}
+
+.bestsellerCard_link:hover {
+  background-color: #996b60;
+}

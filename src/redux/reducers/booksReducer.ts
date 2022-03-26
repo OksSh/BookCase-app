@@ -1,9 +1,16 @@
+import { IBestSellerListProps } from '../../components/BestsellerList/BestsellerList';
 import { ACTIONS } from '../actions/constants';
 
 export interface IBookCardProps {
   title: string;
   author: string;
+  description: string;
   id: string;
+}
+
+export interface IBestsellerBooks {
+  display_name: string;
+  books: [];
 }
 
 export interface IBooksState {
@@ -13,6 +20,8 @@ export interface IBooksState {
   searchAuthor: string;
   searchTitle: string;
   searchOffset: number;
+  bestsellerBooks: IBestSellerListProps[];
+  publishedDate: string;
 }
 
 export const defaultStateBooks: IBooksState = {
@@ -22,6 +31,8 @@ export const defaultStateBooks: IBooksState = {
   searchAuthor: '',
   searchTitle: '',
   searchOffset: 20,
+  bestsellerBooks: [],
+  publishedDate: '',
 };
 
 export const booksReducer = (state = defaultStateBooks, action: any) => {
@@ -39,6 +50,14 @@ export const booksReducer = (state = defaultStateBooks, action: any) => {
 
   if (action.type === ACTIONS.SET_SEARCH_TITLE) {
     return { ...state, searchTitle: action.searchTitle };
+  }
+
+  if (action.type === ACTIONS.GET_BESTSELLER_BOOK_LIST) {
+    return {
+      ...state,
+      bestsellerBooks: action.bestsellerBooks,
+      publishedDate: action.publishedDate,
+    };
   }
 
   return state;
