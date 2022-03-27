@@ -43,9 +43,9 @@
   margin-top: 20px;
 }
 
-.loginForm_error {
+.error {
   margin: 20px 0;
+  font-size: 16px;
+  color: #d62222;
   font-family: Roboto;
-  font-size: 18px;
-  color: #d10e0e;
 }

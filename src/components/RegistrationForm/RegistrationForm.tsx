@@ -1,15 +1,17 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import styles from '../RegistrationForm/RegistrationForm.module.css';
 import { Title } from '../Title/Title';
 import { validationService } from '../../services/validation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
+import { register } from '../../services/userRegistration';
 
 export const RegistrationForm = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -21,6 +23,13 @@ export const RegistrationForm = () => {
     confirmPassword: '',
   });
   const error = useSelector((state: IState) => state.userReducer.error);
+  const isLogin = useSelector((state: IState) => state.userReducer.isLogin);
+
+  useEffect(() => {
+    if (isLogin) {
+      history.push('/');
+    }
+  });
 
   const onChangeUserName = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,14 +89,16 @@ export const RegistrationForm = () => {
     const values = Object.values(errors);
     const isValid = values.every((item) => item === '');
 
-    // if (isValid) {
-    //   dispatch(register({ userName, email, password }));
-    // }
+    if (isValid) {
+      dispatch(register(userName, email, password));
+    }
   };
 
   const onClickRegistration = () => {
     history.push('/login');
   };
+
+  const errorValues = error ? Object.values(error).flat(Infinity) : null;
 
   return (
     <div className={styles.registrationForm}>
@@ -122,6 +133,7 @@ export const RegistrationForm = () => {
                 error={errors.confirmPassword}
                 onChange={onChangeConfirmPassword}
                 name='Confirm Rassword'
+                type='password'
               />
             </div>
             <div>
@@ -132,6 +144,7 @@ export const RegistrationForm = () => {
               <span onClick={onClickRegistration}>login</span>
             </p>
           </div>
+          <p className={styles.error}>{errorValues}</p>
         </div>
       </div>
     </div>

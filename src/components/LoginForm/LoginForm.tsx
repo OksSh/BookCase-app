@@ -4,10 +4,10 @@ import { Input } from '../Input/Input';
 import styles from '../LoginForm/LoginForm.module.css';
 import { Title } from '../Title/Title';
 import { validationService } from '../../services/validation';
-import { userLogin } from '../../services/userLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { IState } from '../../redux/store';
+import { login } from '../../services/userLogin';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
@@ -16,6 +16,7 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogin = useSelector((state: IState) => state.userReducer.isLogin);
+  const error = useSelector((state: IState) => state.userReducer.error);
 
   useEffect(() => {
     if (isLogin) {
@@ -51,14 +52,16 @@ export const LoginForm = () => {
     const values = Object.values(error);
     const isValid = values.every((item) => item === '');
 
-    // if (isValid) {
-    //   dispatch(userLogin(email, password));
-    // }
+    if (isValid) {
+      dispatch(login(email, password));
+    }
   };
 
   const onClickRegistration = () => {
     history.push('/registration');
   };
+
+  const errorValues = error ? Object.values(error).flat(Infinity) : null;
 
   return (
     <div className={styles.loginForm}>
@@ -78,16 +81,18 @@ export const LoginForm = () => {
                 error={errors.password}
                 onChange={onChangePassword}
                 name='Password'
+                type='password'
               />
             </div>
             <div>
               <Button text='Login' onClick={onClick} />
             </div>
             <p className={styles.loginForm_items_text}>
-              If you dont have account you can
+              If you don't have account you can
               <span onClick={onClickRegistration}>registration</span>
             </p>
           </div>
+          <p className={styles.error}>{errorValues}</p>
         </div>
       </div>
     </div>
