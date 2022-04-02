@@ -19,12 +19,62 @@
   height: 360px;
 }
 
+.bestsellerCard_likeWrapper {
+  display: flex;
+  justify-content: space-between;
+  min-height: 55px;
+}
+
 .bestsellerCard_title {
   font-family: Lato-Regular;
   font-size: 22px;
   color: #000000;
   cursor: pointer;
   margin: 10px 0px;
+  max-width: 190px;
+}
+
+.bestsellerCard_blackLike {
+  margin: 10px;
+  cursor: pointer;
+  fill: #000000;
+}
+
+.bestsellerCard_redLike {
+  margin: 10px;
+  cursor: pointer;
+  fill: #996b60;
+}
+
+.bestsellerCard_redLike:hover {
+  animation: hoverLike 2s linear infinite;
+}
+
+.bestsellerCard_blackLike:hover {
+  animation: hoverLike 2s linear infinite;
+}
+
+@keyframes hoverLike {
+  20% {
+    width: 25px;
+    height: 25px;
+  }
+  40% {
+    width: 27px;
+    height: 27px;
+  }
+  60% {
+    width: 25px;
+    height: 25px;
+  }
+  80% {
+    width: 27px;
+    height: 27px;
+  }
+  100% {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .bestsellerCard_text {

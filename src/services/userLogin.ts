@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import { getUserAccount } from '../redux/actions/accountActions';
 import { loginFail, loginSuccess } from '../redux/actions/userActions';
 import { refreshFetch } from './helpers';
 
@@ -49,6 +50,7 @@ export const login = (email: string, password: string) => {
 
       const profile = await getProfile();
       dispatch(loginSuccess(profile));
+      dispatch(getUserAccount(profile.username, profile.email));
     } catch (error: any) {
       dispatch(loginFail(error));
     }

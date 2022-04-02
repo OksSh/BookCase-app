@@ -12,7 +12,7 @@
 }
 
 .bestsellerPage {
-  min-height: calc(calc(100vh - 138px));
+  min-height: calc(100vh - 138px);
 }
 
 .wrapper {

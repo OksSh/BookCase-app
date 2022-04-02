@@ -8,6 +8,7 @@ import { validationService } from '../../services/validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
 import { register } from '../../services/userRegistration';
+import { setUserAccount } from '../../redux/actions/accountActions';
 
 export const RegistrationForm = () => {
   const history = useHistory();
@@ -28,8 +29,9 @@ export const RegistrationForm = () => {
   useEffect(() => {
     if (isLogin) {
       history.push('/');
+      dispatch(setUserAccount(userName, email));
     }
-  });
+  }, [userName, email]);
 
   const onChangeUserName = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

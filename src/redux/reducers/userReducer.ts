@@ -18,7 +18,7 @@ const defaultUserState: IUserState = {
 
 export const userReducer = (state = defaultUserState, action: any) => {
   if (action.type === ACTIONS.LOGIN_FAIL) {
-    return { ...state, error: action.error };
+    return { ...state, error: action.error, isLogin: false };
   }
 
   if (action.type === ACTIONS.LOGIN_SUCCESS) {
