@@ -1,0 +1,44 @@
+.quotes {
+  margin-left: 30px;
+}
+
+.container {
+  max-width: 1100px;
+  position: relative;
+}
+
+.quotes_add {
+  cursor: pointer;
+  text-align: end;
+}
+
+.quotes_add:hover {
+  fill: #996b60;
+}
+
+.quotes_modalWindow {
+  position: fixed;
+  max-width: 1100px;
+  width: 100%;
+  z-index: 99;
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quotes_modalWindow_button {
+  cursor: pointer;
+  background-color: blueviolet;
+}
+
+.quotes_emptyQuote {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 10px;
+}
+
+.quotes_items {
+  margin-top: 20px;
+}

@@ -1,0 +1,84 @@
+.favoriteCard {
+  max-width: 230px;
+  margin-bottom: 30px;
+  margin-left: 36px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.favoriteCard_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.favoriteCard_image {
+  width: 230px;
+  height: 350px;
+}
+
+.favoriteCard_likeWrapper {
+  display: flex;
+  justify-content: space-between;
+  min-height: 55px;
+}
+
+.favoriteCard_title {
+  font-family: Lato-Regular;
+  font-size: 22px;
+  color: #000000;
+  cursor: pointer;
+  margin: 10px 0px;
+  max-width: 190px;
+}
+
+.favoriteCard_text {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #000000;
+}
+
+.favoriteCard_delete {
+  margin-top: 15px;
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.favoriteCard_delete:hover {
+  fill: #996b60;
+}
+
+.favoriteCard_author {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+
+.favoriteCard_links {
+  display: flex;
+  flex-direction: column;
+}
+
+.favoriteCard_link {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 7px;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 5px 0px;
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  width: 230px;
+}
+
+.favoriteCard_link:hover {
+  background-color: #996b60;
+}

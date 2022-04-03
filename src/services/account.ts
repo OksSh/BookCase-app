@@ -2,9 +2,13 @@ import { Dispatch } from 'redux';
 import {
   getUserAccount,
   setFavoriteBooks,
+  setQuotes,
   setUserAccount,
 } from '../redux/actions/accountActions';
-import { IFavoriteBooksProps } from '../redux/reducers/accountReducer';
+import {
+  IFavoriteBooksProps,
+  IQuoteProps,
+} from '../redux/reducers/accountReducer';
 
 export const setUser = (userName: string, email: string) => {
   return async (dispatch: Dispatch) => {
@@ -98,5 +102,67 @@ export const deleteFavoriteBook = (
 
     const results = await response.json();
     dispatch(setFavoriteBooks(results.books));
+  };
+};
+
+export const getFavoriteBooks = (userId: string) => {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(`http://localhost:3005/users/${userId}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const results = await response.json();
+
+    dispatch(setFavoriteBooks(results.books));
+  };
+};
+
+export const addQuote = (
+  quotes: IQuoteProps[],
+  author: string,
+  title: string,
+  text: string,
+  userId: string
+) => {
+  return async (dispatch: Dispatch) => {
+    const updatedQuotes = [
+      ...quotes,
+      {
+        title: title,
+        author: author,
+        text: text,
+      },
+    ];
+
+    const response = await fetch(`http://localhost:3005/users/${userId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        quotes: updatedQuotes,
+      }),
+    });
+
+    const results = await response.json();
+
+    const quotesWithId = results.quotes.map((item: IQuoteProps) => ({
+      ...item,
+      id: 'id' + Math.random().toString(16).slice(2),
+    }));
+
+    dispatch(setQuotes(quotesWithId));
+  };
+};
+
+export const getQuotes = (userId: string) => {
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(`http://localhost:3005/users/${userId}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const results = await response.json();
+
+    dispatch(setQuotes(results.quotes));
   };
 };

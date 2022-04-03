@@ -9,16 +9,25 @@ export interface IFavoriteBooksProps {
   amazon: string;
 }
 
+export interface IQuoteProps {
+  title: string;
+  author: string;
+  text: string;
+  id: string;
+}
+
 export interface IAccountState {
   userName: string;
   email: string;
   favoriteBooks: IFavoriteBooksProps[];
+  quotes: IQuoteProps[];
 }
 
 const defaultAccountState: IAccountState = {
   userName: '',
   email: '',
   favoriteBooks: [],
+  quotes: [],
 };
 
 export const accountReducer = (state = defaultAccountState, action: any) => {
@@ -32,6 +41,10 @@ export const accountReducer = (state = defaultAccountState, action: any) => {
 
   if (action.type === ACTIONS.SET_FAVORITE_BOOKS) {
     return { ...state, favoriteBooks: action.favoriteBooks };
+  }
+
+  if (action.type === ACTIONS.SET_QUOTES) {
+    return { ...state, quotes: action.quotes };
   }
 
   return state;
