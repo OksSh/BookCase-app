@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bookReviews {
+  min-height: calc(100vh - 138px);
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.bookReviews_title {
+  display: flex;
+  align-items: center;
+}
+
+.bookReviews_goBack {
+  margin-left: 15px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.bookReviews_goBack:hover {
+  fill: #996b60;
+}
+
+.bookReviews_empty {
+  font-family: Roboto;
+  font-size: 20px;
+  color: #000000;
+}

@@ -24,7 +24,7 @@ export const BooksList = () => {
   useEffect(() => {
     setIsLoading(true);
     dispatch(getBooks(offset));
-  }, [offset, author, title]);
+  }, [offset]);
 
   useEffect(() => {
     setIsLoading(false);

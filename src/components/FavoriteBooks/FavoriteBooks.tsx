@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { IState } from '../../redux/store';
 import { getFavoriteBooks } from '../../services/account';
 import { FavoriteBookCard } from '../FavoriteBookCard/FavoriteBookCard';
 import styles from '../FavoriteBooks/FavoriteBooks.module.css';
 
 export const FavoriteBooks = () => {
+  const history = useHistory();
   const favoriteBooks = useSelector(
     (state: IState) => state.accountReducer.favoriteBooks
   );
@@ -36,7 +38,16 @@ export const FavoriteBooks = () => {
         ) : (
           <p className={styles.favoriteBooks_empty}>
             There is not a single favorite book. You can add your favorite books
-            in the "Favorite Books".
+            in the "
+            <span
+              className={styles.favoriteBooks_empty_link}
+              onClick={() => {
+                history.push('/bestsellers');
+              }}
+            >
+              Bestsellers books
+            </span>
+            ".
           </p>
         )}
       </div>

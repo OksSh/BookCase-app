@@ -21,7 +21,7 @@ export const BestsellerPage = () => {
 
   useEffect(() => {
     dispatch(getBestsellerBooks());
-  }, [bestsellerBooks, publishedDate]);
+  }, []);
 
   return (
     <div className={styles.bestsellerPage}>

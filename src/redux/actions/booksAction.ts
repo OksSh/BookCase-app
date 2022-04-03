@@ -38,3 +38,9 @@ export const setBookReviews = (bookReviews: IBooksState) => {
     bookReviews: bookReviews,
   };
 };
+
+export const deleteBookReviews = () => {
+  return {
+    type: ACTIONS.DELETE_BOOK_REVIEWS,
+  };
+};

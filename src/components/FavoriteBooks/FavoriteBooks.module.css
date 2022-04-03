@@ -22,3 +22,9 @@
   margin-top: 10px;
   margin-left: 30px;
 }
+
+.favoriteBooks_empty_link {
+  cursor: pointer;
+  color: #996b60;
+  font-weight: bold;
+}

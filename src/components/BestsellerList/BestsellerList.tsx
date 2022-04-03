@@ -45,7 +45,7 @@ export const BestsellerList = ({
             image={books[1].book_image}
             amazonHref={books[1].amazon_product_url}
             onClickReviews={() => {
-              histoty.push('/reviews/' + books[0].primary_isbn13);
+              histoty.push('/reviews/' + books[1].primary_isbn13);
             }}
           />
           <BestsellerCard
@@ -56,7 +56,7 @@ export const BestsellerList = ({
             image={books[2].book_image}
             amazonHref={books[2].amazon_product_url}
             onClickReviews={() => {
-              histoty.push('/reviews/' + books[0].primary_isbn13);
+              histoty.push('/reviews/' + books[2].primary_isbn13);
             }}
           />
           <BestsellerCard
@@ -67,7 +67,7 @@ export const BestsellerList = ({
             image={books[3].book_image}
             amazonHref={books[3].amazon_product_url}
             onClickReviews={() => {
-              histoty.push('/reviews/' + books[0].primary_isbn13);
+              histoty.push('/reviews/' + books[3].primary_isbn13);
             }}
           />
           <BestsellerCard
@@ -78,7 +78,7 @@ export const BestsellerList = ({
             image={books[4].book_image}
             amazonHref={books[4].amazon_product_url}
             onClickReviews={() => {
-              histoty.push('/reviews/' + books[0].primary_isbn13);
+              histoty.push('/reviews/' + books[4].primary_isbn13);
             }}
           />
         </div>

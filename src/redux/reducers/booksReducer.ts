@@ -77,5 +77,12 @@ export const booksReducer = (state = defaultStateBooks, action: any) => {
     };
   }
 
+  if (action.type === ACTIONS.DELETE_BOOK_REVIEWS) {
+    return {
+      ...state,
+      bookReviews: defaultStateBooks.bookReviews,
+    };
+  }
+
   return state;
 };

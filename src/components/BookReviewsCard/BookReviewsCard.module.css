@@ -1,0 +1,43 @@
+.bookReviewsCard {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  padding: 20px 20px 20px 0;
+  margin-bottom: 20px;
+}
+
+.bookReviewsCard_author {
+  font-family: Lato-Regular;
+  font-size: 22px;
+  color: #000000;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.bookReviewsCard_text {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.bookReviewsCard_date {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.bestsellerCard_link {
+  text-decoration: none;
+  font-family: Roboto;
+  color: #000000;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.bestsellerCard_link:hover {
+  color: #996b60;
+}
+
+.bestsellerCard_linkWrapper {
+  text-align: end;
+}
