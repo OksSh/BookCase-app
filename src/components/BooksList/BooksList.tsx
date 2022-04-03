@@ -1,48 +1,47 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setBooksOffset } from '../../redux/actions/booksAction';
-import { IBookCardProps } from '../../redux/reducers/booksReducer';
+import { IBookCardProps, IBooksState } from '../../redux/reducers/booksReducer';
 import { IState } from '../../redux/store';
 import { getBooks } from '../../services/bookList';
 import { BookCard } from '../BookCard/BookCard';
 import styles from '../BooksList/BooksList.module.css';
-import { Input } from '../Input/Input';
 import { Preloader } from '../Preloader/Preloader';
-import { SliderToggle } from '../SliderToggle/SliderToggle';
+import { Spinner } from '../Spinner/Spinner';
+import { SliderButtons } from '../SliderButtons/SliderButtons';
 import { Title } from '../Title/Title';
+import { BooksSearch } from '../Search/BooksSearch';
 
 export const BooksList = () => {
   const books = useSelector((state: IState) => state.booksReducer.books);
   const dispatch = useDispatch();
   const offset = useSelector((state: IState) => state.booksReducer.booksOffset);
-  const length = useSelector((state: IState) => state.booksReducer.booksLength);
+  const [isLoading, setIsLoading] = useState(false);
+  const author = useSelector(
+    (state: IState) => state.booksReducer.searchAuthor
+  );
+  const title = useSelector((state: IState) => state.booksReducer.searchTitle);
 
   useEffect(() => {
-    dispatch(getBooks(offset, length));
-  }, [offset, length]);
-
-  const onClickLeft = useCallback(() => {
-    if (offset > 20) {
-      const newOffset = offset - 20;
-      dispatch(setBooksOffset(newOffset));
-    }
+    setIsLoading(true);
+    dispatch(getBooks(offset));
   }, [offset]);
 
-  const onClickRight = useCallback(() => {
-    if (length > offset) {
-      const books: IBookCardProps[] = [];
-      const newOffset = offset + 20;
-      dispatch(setBooksOffset(newOffset));
-    }
-  }, [length, offset]);
+  useEffect(() => {
+    setIsLoading(false);
+  }, [books, setIsLoading]);
 
   return (
     <div className={styles.bookList}>
       <div className={styles.container}>
-        <div className={styles.bookList_titleWrapper}>
-          <Title text='Books' />
-          <SliderToggle onClickLeft={onClickLeft} onClickRight={onClickRight} />
-          <Input name='Search' />
+        <div className={styles.bookList_headerWrapper}>
+          <div className={styles.bookList_title}>
+            <Title text='Books' />
+            {isLoading ? <Spinner /> : null}
+          </div>
+          <div className={styles.bookList_slider}>
+            <SliderButtons />
+          </div>
+          <BooksSearch />
         </div>
         <div className={styles.wrapper}>
           {books.length >= 1 ? (
@@ -50,6 +49,7 @@ export const BooksList = () => {
               return (
                 <BookCard
                   id={item.id}
+                  text={item.description}
                   key={item.id}
                   title={item.title}
                   author={item.author}

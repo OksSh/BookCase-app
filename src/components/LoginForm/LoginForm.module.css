@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loginForm {
+  min-height: calc(100vh - 138px);
+}
+
+.wrapper {
+  max-width: 315px;
+}
+
+.container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.loginForm_items div {
+  margin-bottom: 30px;
+}
+
+.loginForm_items span {
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 28px;
+  color: #996b60;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.loginForm_items_text {
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000000;
+  margin-top: 20px;
+}
+
+.error {
+  margin: 20px 0;
+  font-size: 16px;
+  color: #d62222;
+  font-family: Roboto;
+}

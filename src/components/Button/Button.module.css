@@ -1,7 +1,16 @@
 .button {
-  width: 100px;
-  height: 30px;
-  background-color: rgb(134, 122, 122);
-  border-radius: 30px;
+  width: 315px;
+  height: 40px;
+  background-color: #000000;
+  border-radius: 10px;
   border: 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #996b60;
 }

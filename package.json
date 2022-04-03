@@ -24,10 +24,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server -w server/info.json -p 3005"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +51,8 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
-    "@types/redux": "^3.6.0"
+    "@types/redux": "^3.6.0",
+    "concurrently": "^7.0.0",
+    "json-server": "^0.17.0"
   }
 }

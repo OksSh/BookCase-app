@@ -1,0 +1,12 @@
+.sliderButtonLeft {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  fill: #00000070;
+  transform: rotate(180deg);
+}
+
+.isActive {
+  fill: #000000;
+  cursor: pointer;
+}

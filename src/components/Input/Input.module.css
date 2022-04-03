@@ -1,7 +1,34 @@
-.input input {
-  height: 35px;
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_input {
+  height: 40px;
   padding-left: 10px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 0px;
+  max-width: 315px;
+  font-size: 18px;
+  font-family: Roboto;
+  border-radius: 10px;
+}
+
+.input_label {
+  color: #000000;
+  font-family: Roboto;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.errorTitle {
+  color: #d62222;
+  font-family: Roboto;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.errorInput {
+  border-color: #d62222;
 }

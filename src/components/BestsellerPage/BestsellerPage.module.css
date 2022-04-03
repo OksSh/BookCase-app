@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.bestsellerPage {
+  min-height: calc(100vh - 138px);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bestsellerPage_title p {
+  font-family: Lato-Regular;
+  font-size: 20px;
+  color: #000000;
+}
+
+.bestsellerPage_filter {
+  cursor: pointer;
+}

@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "books": [
+        {
+          "isbn": "9781982154943",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9781982154912.jpg",
+          "title": "THE RECOVERY AGENT",
+          "author": "Janet Evanovich",
+          "description": "When her family’s home is threatened, Gabriela Rose goes with her ex-husband to seek lost treasure in the jungles of Peru.",
+          "amazon": "https://www.amazon.com/dp/1982154918?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9780759554344",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9780759554344.jpg",
+          "title": "RUN, ROSE, RUN",
+          "author": "Dolly Parton and James Patterson",
+          "description": "A singer-songwriter goes to Nashville seeking stardom but is followed by her dark past.",
+          "amazon": "https://www.amazon.com/dp/075955434X?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9780735219106",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9780735219090.jpg",
+          "title": "WHERE THE CRAWDADS SING",
+          "author": "Delia Owens",
+          "description": "In a quiet town on the North Carolina coast in 1969, a young woman who survived alone in the marsh becomes a murder suspect.",
+          "amazon": "https://www.amazon.com/Where-Crawdads-Sing-Delia-Owens/dp/0735219095?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9781538724736",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9781791392796.jpg",
+          "title": "VERITY",
+          "author": "Colleen Hoover",
+          "description": "Lowen Ashleigh is hired by the husband of an injured writer to complete her popular series and uncovers a horrifying truth.",
+          "amazon": "https://www.amazon.com/dp/1791392792?tag=NYTBSREV-20"
+        }
+      ],
+      "quotes": [
+        {
+          "title": "Alice's Adventures in Wonderland",
+          "author": " ‎Lewis Carroll",
+          "text": "My dear, here we must run as fast as we can, just to stay in place. And if you wish to go anywhere you must run twice as fast as that.",
+          "id": "id6c1d8cd729ff"
+        },
+        {
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "text": "Whenever you feel like criticizing any one,» he told me, «just remember that all the people in this world haven’t had the advantages that you’ve had."
+        }
+      ],
+      "userName": "OksSh",
+      "email": "ksucha.1994@mail.ru",
+      "id": "OksSh"
+    }
+  ]
+}

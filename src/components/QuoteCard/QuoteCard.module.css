@@ -1,0 +1,36 @@
+.quoteCard {
+  max-width: 1000px;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.quoteCard_title {
+  font-family: Lato-Regular;
+  font-size: 22px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.quoteCard_text {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.quoteCard_author {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.quote_delete {
+  cursor: pointer;
+}
+
+.quote_delete:hover {
+  fill: #996b60;
+}

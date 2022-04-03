@@ -4,20 +4,33 @@
   box-sizing: border-box;
 }
 
+.bookCard {
+  margin-bottom: 10px;
+}
+
 .wrapper {
   width: 300px;
   height: 200px;
+  position: relative;
+  cursor: pointer;
 }
 
-.bookCard_title:hover {
-  color: #996b60;
+.wrapper:hover::after {
+  content: attr(data-description);
+  position: absolute;
+  top: -30px;
+  left: 100px;
+  padding: 3px;
+  font-stretch: ultra-condensed;
+  font-size: 14px;
+  font-weight: 100;
+  color: #b92828;
 }
 
 .bookCard_title {
   font-family: Lato-Regular;
   font-size: 22px;
   color: #000000;
-  cursor: pointer;
   margin-bottom: 10px;
 }
 
@@ -26,4 +39,19 @@
   font-size: 18px;
   line-height: 28px;
   color: #000000;
+}
+
+.bookCard_text {
+  position: absolute;
+  font-family: Roboto;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+  align-items: center;
+  height: 100%;
+  top: 0;
+}
+
+.bookCard_hiddenText {
+  opacity: 0;
 }

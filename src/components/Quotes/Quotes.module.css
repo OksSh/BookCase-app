@@ -1,0 +1,65 @@
+.quotes {
+  margin-left: 30px;
+}
+
+.container {
+  max-width: 1100px;
+  position: relative;
+}
+
+.quotes_add {
+  cursor: pointer;
+  text-align: end;
+}
+
+.quotes_add:hover {
+  fill: #996b60;
+}
+
+.quotes_empty {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 10px;
+}
+
+.quotes_items {
+  margin-top: 20px;
+}
+
+.quotes_modalWindow {
+  position: fixed;
+  background: #7b7a7a4f;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.quotes_wrapper {
+  position: absolute;
+  background: white;
+  padding: 50px 40px 60px 80px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.quotes_modalWindow_content {
+  display: flex;
+}
+
+.modalWindow_close {
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.modalWindow_close:hover {
+  fill: #996b60;
+}
+
+.modalWindow_error {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #d62222;
+  font-family: Roboto;
+}

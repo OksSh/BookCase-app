@@ -42,4 +42,5 @@
 
 .header_activeLink {
   color: #996b60;
+  cursor: default;
 }

@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.bestsellerList_title {
+  font-family: Lato-Regular;
+  font-size: 32px;
+  color: #000000;
+  margin: 35px 0px;
+}
+
+.bestsellerList_title::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #000000;
+  margin-top: 10px;
+}
