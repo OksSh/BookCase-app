@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Account } from '../components/Account/Account';
 import { BestsellerPage } from '../components/BestsellerPage/BestsellerPage';
+import { BookRewievs } from '../components/BookReviews/BookReviews';
 import { BooksList } from '../components/BooksList/BooksList';
 import { FavoriteBooks } from '../components/FavoriteBooks/FavoriteBooks';
 import { Footer } from '../components/Footer/Footer';
@@ -28,12 +29,7 @@ export const RootRouter = () => {
         <Route path='/account' exact>
           {isLogin ? <Account /> : <Redirect to='/login' />}
         </Route>
-        <Route path='/favorite-books' exact>
-          {isLogin ? <FavoriteBooks /> : <Redirect to='/login' />}
-        </Route>
-        <Route path='/quotes' exact>
-          {isLogin ? <Quotes /> : <Redirect to='/login' />}
-        </Route>
+        <Route path='/reviews/:isbn' component={BookRewievs} exact />
       </Switch>
       <Footer />
     </BrowserRouter>

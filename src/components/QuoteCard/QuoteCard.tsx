@@ -1,3 +1,7 @@
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { IState } from '../../redux/store';
+import { deleteQuote } from '../../services/account';
 import styles from '../QuoteCard/QuoteCard.module.css';
 export interface IQuoteCardProps {
   title: string;
@@ -7,6 +11,14 @@ export interface IQuoteCardProps {
 }
 
 export const QuoteCard = ({ title, text, author, id }: IQuoteCardProps) => {
+  const dispatch = useDispatch();
+  const quotes = useSelector((state: IState) => state.accountReducer.quotes);
+  const userId = useSelector((state: IState) => state.accountReducer.userName);
+
+  const onClickDeleteQuote = useCallback(() => {
+    dispatch(deleteQuote(quotes, userId, id));
+  }, [quotes]);
+
   return (
     <div className={styles.quoteCard}>
       <div className={styles.quoteCard_content}>
@@ -15,10 +27,10 @@ export const QuoteCard = ({ title, text, author, id }: IQuoteCardProps) => {
         <p className={styles.quoteCard_author}>{author}</p>
       </div>
       <svg
-        onClick={() => {}}
+        onClick={onClickDeleteQuote}
         className={styles.quote_delete}
-        width='17px'
-        height='17px'
+        width='13px'
+        height='13px'
         viewBox='0 0 55 54'
         fill='#000000'
       >

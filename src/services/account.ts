@@ -166,3 +166,22 @@ export const getQuotes = (userId: string) => {
     dispatch(setQuotes(results.quotes));
   };
 };
+
+export const deleteQuote = (
+  quotes: IQuoteProps[],
+  userId: string,
+  id: string
+) => {
+  const updatedQuotes = quotes.filter((item) => item.id !== id);
+
+  return async (dispatch: Dispatch) => {
+    const response = await fetch(`http://localhost:3005/users/${userId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ quotes: updatedQuotes }),
+    });
+
+    const results = await response.json();
+    dispatch(setQuotes(results.quotes));
+  };
+};

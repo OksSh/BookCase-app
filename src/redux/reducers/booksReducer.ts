@@ -13,6 +13,14 @@ export interface IBestsellerBooks {
   books: [];
 }
 
+export interface IBookReviewsCardProps {
+  byline: string;
+  summary: string;
+  publication_dt: string;
+  url: string;
+  isbn13: string;
+}
+
 export interface IBooksState {
   books: IBookCardProps[];
   booksOffset: number;
@@ -22,6 +30,7 @@ export interface IBooksState {
   searchOffset: number;
   bestsellerBooks: IBestSellerListProps[];
   publishedDate: string;
+  bookReviews: IBookReviewsCardProps[];
 }
 
 export const defaultStateBooks: IBooksState = {
@@ -33,6 +42,7 @@ export const defaultStateBooks: IBooksState = {
   searchOffset: 20,
   bestsellerBooks: [],
   publishedDate: '',
+  bookReviews: [],
 };
 
 export const booksReducer = (state = defaultStateBooks, action: any) => {
@@ -57,6 +67,13 @@ export const booksReducer = (state = defaultStateBooks, action: any) => {
       ...state,
       bestsellerBooks: action.bestsellerBooks,
       publishedDate: action.publishedDate,
+    };
+  }
+
+  if (action.type === ACTIONS.SET_BOOK_REVIEWS) {
+    return {
+      ...state,
+      bookReviews: action.bookReviews,
     };
   }
 

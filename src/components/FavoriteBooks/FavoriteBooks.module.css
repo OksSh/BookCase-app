@@ -10,7 +10,15 @@
   margin: 0 auto;
 }
 
-.wrapper {
+.favoriteBooks_wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+
+.favoriteBooks_empty {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 10px;
+  margin-left: 30px;
 }

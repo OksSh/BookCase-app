@@ -31,3 +31,10 @@ export const getBestsellerBookList = (
     publishedDate: date,
   };
 };
+
+export const setBookReviews = (bookReviews: IBooksState) => {
+  return {
+    type: ACTIONS.SET_BOOK_REVIEWS,
+    bookReviews: bookReviews,
+  };
+};

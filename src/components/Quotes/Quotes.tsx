@@ -2,6 +2,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
 import { addQuote, getQuotes } from '../../services/account';
+import { Button } from '../Button/Button';
 import { QuoteCard } from '../QuoteCard/QuoteCard';
 import styles from '../Quotes/Quotes.module.css';
 import { TextArea } from '../TextArea/TextArea';
@@ -16,12 +17,10 @@ export const Quotes = () => {
   const userId = useSelector((state: IState) => state.accountReducer.userName);
   const dispatch = useDispatch();
   const [isError, setIsError] = useState<boolean>(false);
-  const [isEmptyQuote, setiIsEmptyQuote] = useState<boolean>(false);
 
   useEffect(() => {
-    setiIsEmptyQuote(Object.values(quotes[0]).every((item) => item === ''));
     dispatch(getQuotes(userId));
-  }, [userId, quotes]);
+  }, [userId]);
 
   const onChangeTitle = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -48,7 +47,7 @@ export const Quotes = () => {
 
   const onClickAddQuote = useCallback(() => {
     const data = { title: title, text: text, author: author };
-    const values = Object.values(data).every((item) => item === '');
+    const values = Object.values(data).some((item) => item === '');
     if (!values) {
       setIsError(false);
       setQuote(data);
@@ -56,6 +55,7 @@ export const Quotes = () => {
       setAuthor('');
       setText('');
       setTitle('');
+      setIsModalWindow(false);
     } else {
       setIsError(true);
     }
@@ -77,20 +77,54 @@ export const Quotes = () => {
         {isModalWindow ? (
           <div className={styles.quotes_modalWindow}>
             <div className={styles.quotes_wrapper}>
-              <TextArea name='Title' value={title} onChange={onChangeTitle} />
-              <TextArea name='Quote' value={text} onChange={onChangeQuote} />
-              <TextArea
-                name='Author'
-                value={author}
-                onChange={onChangeAuthor}
-              />
-              <p
-                className={styles.quotes_modalWindow_button}
-                onClick={onClickAddQuote}
-              >
-                Add a quote
-              </p>
-              {isError ? <p>Fill in all the fields</p> : null}
+              <div className={styles.quotes_modalWindow_content}>
+                <div>
+                  <TextArea
+                    name='Title'
+                    value={title}
+                    onChange={onChangeTitle}
+                  />
+                  <TextArea
+                    name='Quote'
+                    value={text}
+                    onChange={onChangeQuote}
+                  />
+                  <TextArea
+                    name='Author'
+                    value={author}
+                    onChange={onChangeAuthor}
+                  />
+                  <Button text='Add a quote' onClick={onClickAddQuote} />
+                </div>
+                <svg
+                  onClick={onClickModalWindow}
+                  className={styles.modalWindow_close}
+                  width='20px'
+                  height='20px'
+                  viewBox='0 0 55 54'
+                  fill='#000000'
+                >
+                  <g transform='translate(0.000000, -1.000000)'>
+                    <rect
+                      transform='translate(27.961245, 28.014445) rotate(45.000000) translate(-27.961245, -28.014445) '
+                      x='-8.78840257'
+                      y='26.5144594'
+                      width='73.4992951'
+                      height='2.99997123'
+                    />
+                    <rect
+                      transform='translate(27.890535, 28.014445) rotate(45.000000) translate(-27.890535, -28.014445) '
+                      x='26.3905494'
+                      y='-8.73520257'
+                      width='2.99997123'
+                      height='73.4992951'
+                    />
+                  </g>
+                </svg>
+              </div>
+              {isError ? (
+                <p className={styles.modalWindow_error}>Fill in all areas</p>
+              ) : null}
             </div>
           </div>
         ) : null}
@@ -106,12 +140,11 @@ export const Quotes = () => {
               />
             ))}
           </div>
-        ) : null}
-        {isEmptyQuote ? (
-          <p className={styles.quotes_emptyQuote}>
+        ) : (
+          <p className={styles.quotes_empty}>
             There is not a single quote. You can add quotes from books.
           </p>
-        ) : null}
+        )}
       </div>
     </div>
   );

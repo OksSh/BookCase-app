@@ -4,7 +4,6 @@ import { IState } from '../../redux/store';
 import { getFavoriteBooks } from '../../services/account';
 import { FavoriteBookCard } from '../FavoriteBookCard/FavoriteBookCard';
 import styles from '../FavoriteBooks/FavoriteBooks.module.css';
-const [isEmptyBook, setiIsEmptyBook] = useState<boolean>(false);
 
 export const FavoriteBooks = () => {
   const favoriteBooks = useSelector(
@@ -14,17 +13,14 @@ export const FavoriteBooks = () => {
   const userId = useSelector((state: IState) => state.accountReducer.userName);
 
   useEffect(() => {
-    setiIsEmptyBook(
-      Object.values(favoriteBooks[0]).every((item) => item === '')
-    );
     dispatch(getFavoriteBooks(userId));
-  }, [favoriteBooks]);
+  }, [userId]);
 
   return (
     <div className={styles.favoriteBooks}>
       <div className={styles.container}>
         {favoriteBooks.length >= 1 ? (
-          <div className={styles.wrapper}>
+          <div className={styles.favoriteBooks_wrapper}>
             {favoriteBooks.map((item) => (
               <FavoriteBookCard
                 author={item.author}
@@ -37,13 +33,12 @@ export const FavoriteBooks = () => {
               ></FavoriteBookCard>
             ))}
           </div>
-        ) : null}
-        {isEmptyBook ? (
-          <p>
-            There is not a single favorite book. You can add your favorite
-            books.
+        ) : (
+          <p className={styles.favoriteBooks_empty}>
+            There is not a single favorite book. You can add your favorite books
+            in the "Favorite Books".
           </p>
-        ) : null}
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { BestsellerCard } from '../BestsellerCard/BestsellerCard';
 import styles from '../BestsellerList/BestsellerList.module.css';
 
@@ -19,6 +20,7 @@ export const BestsellerList = ({
   books,
   display_name,
 }: IBestSellerListProps) => {
+  const histoty = useHistory();
   return (
     <div className={styles.bestsellerList}>
       <div className={styles.container}>
@@ -31,7 +33,9 @@ export const BestsellerList = ({
             text={books[0].description}
             image={books[0].book_image}
             amazonHref={books[0].amazon_product_url}
-            onClickReviews={() => {}}
+            onClickReviews={() => {
+              histoty.push('/reviews/' + books[0].primary_isbn13);
+            }}
           />
           <BestsellerCard
             author={books[1].author}
@@ -40,7 +44,9 @@ export const BestsellerList = ({
             text={books[1].description}
             image={books[1].book_image}
             amazonHref={books[1].amazon_product_url}
-            onClickReviews={() => {}}
+            onClickReviews={() => {
+              histoty.push('/reviews/' + books[0].primary_isbn13);
+            }}
           />
           <BestsellerCard
             author={books[2].author}
@@ -49,7 +55,9 @@ export const BestsellerList = ({
             text={books[2].description}
             image={books[2].book_image}
             amazonHref={books[2].amazon_product_url}
-            onClickReviews={() => {}}
+            onClickReviews={() => {
+              histoty.push('/reviews/' + books[0].primary_isbn13);
+            }}
           />
           <BestsellerCard
             author={books[3].author}
@@ -58,7 +66,9 @@ export const BestsellerList = ({
             text={books[3].description}
             image={books[3].book_image}
             amazonHref={books[3].amazon_product_url}
-            onClickReviews={() => {}}
+            onClickReviews={() => {
+              histoty.push('/reviews/' + books[0].primary_isbn13);
+            }}
           />
           <BestsellerCard
             author={books[4].author}
@@ -67,7 +77,9 @@ export const BestsellerList = ({
             text={books[4].description}
             image={books[4].book_image}
             amazonHref={books[4].amazon_product_url}
-            onClickReviews={() => {}}
+            onClickReviews={() => {
+              histoty.push('/reviews/' + books[0].primary_isbn13);
+            }}
           />
         </div>
       </div>
