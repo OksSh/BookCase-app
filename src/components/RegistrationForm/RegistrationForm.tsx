@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
 import { register } from '../../services/userRegistration';
 import { setUserAccount } from '../../redux/actions/accountActions';
+import { Context } from '../../App';
 
 export const RegistrationForm = () => {
   const history = useHistory();
@@ -25,10 +26,11 @@ export const RegistrationForm = () => {
   });
   const error = useSelector((state: IState) => state.userReducer.error);
   const isLogin = useSelector((state: IState) => state.userReducer.isLogin);
+  const { theme } = useContext(Context);
 
   useEffect(() => {
     if (isLogin) {
-      history.push('/');
+      history.push('/account');
       dispatch(setUserAccount(userName, email));
     }
   }, [userName, email]);
@@ -103,7 +105,7 @@ export const RegistrationForm = () => {
   const errorValues = error ? Object.values(error).flat(Infinity) : null;
 
   return (
-    <div className={styles.registrationForm}>
+    <div style={theme} className={styles.registrationForm}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <Title text='Registration' />
@@ -141,7 +143,7 @@ export const RegistrationForm = () => {
             <div>
               <Button onClick={onClick} text='Registration' />
             </div>
-            <p className={styles.registrationForm_items_text}>
+            <p style={theme} className={styles.registrationForm_items_text}>
               If you have account you can
               <span onClick={onClickRegistration}>login</span>
             </p>

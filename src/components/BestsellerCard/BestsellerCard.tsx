@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import { addFavoriteBook, deleteFavoriteBook } from '../../services/account';
 import styles from '../BestsellerCard/BestsellerCard.module.css';
@@ -30,6 +31,7 @@ export const BestsellerCard = ({
   );
   const userId = useSelector((state: IState) => state.accountReducer.userName);
   const dispatch = useDispatch();
+  const { theme } = useContext(Context);
 
   const onClickLike = useCallback(() => {
     const isReplay = favoriteBooks.some(
@@ -59,12 +61,14 @@ export const BestsellerCard = ({
   }, [favoriteBooks, isLike]);
 
   return (
-    <div className={styles.bestsellerCard}>
+    <div style={theme} className={styles.bestsellerCard}>
       <div className={styles.wrapper}>
         <div className={styles.bestsellerCard_content}>
           <img className={styles.bestsellerCard_image} src={image} />
           <div className={styles.bestsellerCard_likeWrapper}>
-            <h3 className={styles.bestsellerCard_title}>{title}</h3>
+            <h3 style={theme} className={styles.bestsellerCard_title}>
+              {title}
+            </h3>
             {isLogin ? (
               <svg
                 className={
@@ -88,8 +92,12 @@ export const BestsellerCard = ({
               </svg>
             ) : null}
           </div>
-          <p className={styles.bestsellerCard_text}>{text}</p>
-          <p className={styles.bestsellerCard_author}>{author}</p>
+          <p style={theme} className={styles.bestsellerCard_text}>
+            {text}
+          </p>
+          <p style={theme} className={styles.bestsellerCard_author}>
+            {author}
+          </p>
         </div>
         <div className={styles.bestsellerCard_links}>
           <a

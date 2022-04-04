@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import styles from '../SliderButtonLeft/SliderButtonLeft.module.css';
 
@@ -8,8 +10,10 @@ interface ISliderButtonLeftProps {
 
 export const SliderButtonLeft = ({ onClickLeft }: ISliderButtonLeftProps) => {
   const offset = useSelector((state: IState) => state.booksReducer.booksOffset);
+  const { theme } = useContext(Context);
   return (
     <svg
+      style={theme}
       onClick={onClickLeft}
       className={
         offset > 20

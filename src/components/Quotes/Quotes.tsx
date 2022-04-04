@@ -1,5 +1,12 @@
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import { addQuote, getQuotes } from '../../services/account';
 import { Button } from '../Button/Button';
@@ -17,6 +24,8 @@ export const Quotes = () => {
   const userId = useSelector((state: IState) => state.accountReducer.userName);
   const dispatch = useDispatch();
   const [isError, setIsError] = useState<boolean>(false);
+
+  const { theme } = useContext(Context);
 
   useEffect(() => {
     dispatch(getQuotes(userId));
@@ -42,6 +51,10 @@ export const Quotes = () => {
   );
 
   const onClickModalWindow = useCallback(() => {
+    setAuthor('');
+    setText('');
+    setTitle('');
+    setIsError(false);
     setIsModalWindow(!isModalWindow);
   }, [isModalWindow]);
 
@@ -62,9 +75,10 @@ export const Quotes = () => {
   }, [quotes, title, text, author]);
 
   return (
-    <div className={styles.quotes}>
+    <div style={theme} className={styles.quotes}>
       <div className={styles.container}>
         <svg
+          style={theme}
           className={styles.quotes_add}
           onClick={onClickModalWindow}
           width='35'
@@ -76,7 +90,7 @@ export const Quotes = () => {
         </svg>
         {isModalWindow ? (
           <div className={styles.quotes_modalWindow}>
-            <div className={styles.quotes_wrapper}>
+            <div style={theme} className={styles.quotes_wrapper}>
               <div className={styles.quotes_modalWindow_content}>
                 <div>
                   <TextArea
@@ -97,6 +111,7 @@ export const Quotes = () => {
                   <Button text='Add a quote' onClick={onClickAddQuote} />
                 </div>
                 <svg
+                  style={theme}
                   onClick={onClickModalWindow}
                   className={styles.modalWindow_close}
                   width='20px'
@@ -122,9 +137,15 @@ export const Quotes = () => {
                   </g>
                 </svg>
               </div>
-              {isError ? (
-                <p className={styles.modalWindow_error}>Fill in all areas</p>
-              ) : null}
+              <p
+                className={
+                  isError
+                    ? styles.modalWindow_error
+                    : styles.modalWindow_error_hidden
+                }
+              >
+                Fill in all areas
+              </p>
             </div>
           </div>
         ) : null}

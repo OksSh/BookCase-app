@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { Context } from '../../App';
 import styles from '../Title/Title.module.css';
 
 interface ITitleProps {
@@ -5,5 +7,10 @@ interface ITitleProps {
 }
 
 export const Title = ({ text }: ITitleProps) => {
-  return <h1 className={styles.title}>{text}</h1>;
+  const { theme } = useContext(Context);
+  return (
+    <h1 style={theme} className={styles.title}>
+      {text}
+    </h1>
+  );
 };

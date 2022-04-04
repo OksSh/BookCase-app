@@ -1,4 +1,5 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, useContext } from 'react';
+import { Context } from '../../App';
 import styles from '../TextArea/TextArea.module.css';
 
 interface ITextAreaProps {
@@ -8,9 +9,12 @@ interface ITextAreaProps {
 }
 
 export const TextArea = ({ name, value, onChange }: ITextAreaProps) => {
+  const { theme } = useContext(Context);
   return (
-    <div className={styles.textArea}>
-      <p className={styles.textArea_label}>{name}</p>
+    <div style={theme} className={styles.textArea}>
+      <p style={theme} className={styles.textArea_label}>
+        {name}
+      </p>
       <textarea
         className={styles.textArea_item}
         value={value}

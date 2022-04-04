@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IBookCardProps, IBooksState } from '../../redux/reducers/booksReducer';
 import { IState } from '../../redux/store';
@@ -10,6 +10,7 @@ import { Spinner } from '../Spinner/Spinner';
 import { SliderButtons } from '../SliderButtons/SliderButtons';
 import { Title } from '../Title/Title';
 import { BooksSearch } from '../Search/BooksSearch';
+import { Context } from '../../App';
 
 export const BooksList = () => {
   const books = useSelector((state: IState) => state.booksReducer.books);
@@ -20,6 +21,7 @@ export const BooksList = () => {
     (state: IState) => state.booksReducer.searchAuthor
   );
   const title = useSelector((state: IState) => state.booksReducer.searchTitle);
+  const { theme } = useContext(Context);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,7 +33,7 @@ export const BooksList = () => {
   }, [books, setIsLoading]);
 
   return (
-    <div className={styles.bookList}>
+    <div className={styles.bookList} style={theme}>
       <div className={styles.container}>
         <div className={styles.bookList_headerWrapper}>
           <div className={styles.bookList_title}>

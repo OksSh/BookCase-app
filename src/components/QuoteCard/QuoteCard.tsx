@@ -1,5 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import { deleteQuote } from '../../services/account';
 import styles from '../QuoteCard/QuoteCard.module.css';
@@ -14,6 +15,7 @@ export const QuoteCard = ({ title, text, author, id }: IQuoteCardProps) => {
   const dispatch = useDispatch();
   const quotes = useSelector((state: IState) => state.accountReducer.quotes);
   const userId = useSelector((state: IState) => state.accountReducer.userName);
+  const { theme } = useContext(Context);
 
   const onClickDeleteQuote = useCallback(() => {
     dispatch(deleteQuote(quotes, userId, id));
@@ -22,12 +24,19 @@ export const QuoteCard = ({ title, text, author, id }: IQuoteCardProps) => {
   return (
     <div className={styles.quoteCard}>
       <div className={styles.quoteCard_content}>
-        <h3 className={styles.quoteCard_title}>{title}</h3>
-        <p className={styles.quoteCard_text}>{text}</p>
-        <p className={styles.quoteCard_author}>{author}</p>
+        <h3 style={theme} className={styles.quoteCard_title}>
+          {title}
+        </h3>
+        <p style={theme} className={styles.quoteCard_text}>
+          {text}
+        </p>
+        <p style={theme} className={styles.quoteCard_author}>
+          {author}
+        </p>
       </div>
       <svg
         onClick={onClickDeleteQuote}
+        style={theme}
         className={styles.quote_delete}
         width='13px'
         height='13px'

@@ -1,5 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import { deleteFavoriteBook } from '../../services/account';
 import styles from '../FavoriteBookCard/FavoriteBookCard.module.css';
@@ -31,15 +32,20 @@ export const FavoriteBookCard = ({
     dispatch(deleteFavoriteBook(favoriteBooks, userId, id));
   }, [favoriteBooks]);
 
+  const { theme } = useContext(Context);
+
   return (
     <div className={styles.favoriteCard}>
       <div className={styles.wrapper}>
         <div className={styles.favoriteCard_content}>
           <img className={styles.favoriteCard_image} src={image} />
           <div className={styles.favoriteCard_likeWrapper}>
-            <h3 className={styles.favoriteCard_title}>{title}</h3>
+            <h3 style={theme} className={styles.favoriteCard_title}>
+              {title}
+            </h3>
             <svg
               onClick={onClickDelete}
+              style={theme}
               className={styles.favoriteCard_delete}
               width='17px'
               height='17px'
@@ -64,8 +70,12 @@ export const FavoriteBookCard = ({
               </g>
             </svg>
           </div>
-          <p className={styles.favoriteCard_text}>{text}</p>
-          <p className={styles.favoriteCard_author}>{author}</p>
+          <p style={theme} className={styles.favoriteCard_text}>
+            {text}
+          </p>
+          <p style={theme} className={styles.favoriteCard_author}>
+            {author}
+          </p>
         </div>
         <div className={styles.favoriteCard_links}>
           <a
