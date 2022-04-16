@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { Context } from '../../App';
 import { deleteBookReviews } from '../../redux/actions/booksAction';
 import { IState } from '../../redux/store';
 import { getBookReviews } from '../../services/bookReviewsList';
@@ -26,6 +27,7 @@ export const BookReviews = () => {
   const reviews = useSelector(
     (state: IState) => state.booksReducer.bookReviews
   );
+  const { theme } = useContext(Context);
 
   useEffect(() => {
     dispatch(getBookReviews(params.isbn));
@@ -36,7 +38,7 @@ export const BookReviews = () => {
   }, [params.isbn]);
 
   return (
-    <div className={styles.bookReviews}>
+    <div style={theme} className={styles.bookReviews}>
       <div className={styles.container}>
         <div className={styles.bookReviews_title}>
           <Title text='Book reviews' />
@@ -62,7 +64,9 @@ export const BookReviews = () => {
               />
             ))
           ) : (
-            <p className={styles.bookReviews_empty}>No reviews</p>
+            <p style={theme} className={styles.bookReviews_empty}>
+              No reviews
+            </p>
           )}
         </div>
       </div>

@@ -39,6 +39,7 @@
   cursor: pointer;
   fill: #000000;
   opacity: 60%;
+  border: 1px solid #ffffff;
 }
 
 .bestsellerCard_redLike {

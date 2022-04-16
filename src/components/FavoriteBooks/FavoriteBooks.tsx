@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import { getFavoriteBooks } from '../../services/account';
 import { FavoriteBookCard } from '../FavoriteBookCard/FavoriteBookCard';
@@ -13,6 +14,7 @@ export const FavoriteBooks = () => {
   );
   const dispatch = useDispatch();
   const userId = useSelector((state: IState) => state.accountReducer.userName);
+  const { theme } = useContext(Context);
 
   useEffect(() => {
     dispatch(getFavoriteBooks(userId));
@@ -36,7 +38,7 @@ export const FavoriteBooks = () => {
             ))}
           </div>
         ) : (
-          <p className={styles.favoriteBooks_empty}>
+          <p style={theme} className={styles.favoriteBooks_empty}>
             There is not a single favorite book. You can add your favorite books
             in the "
             <span

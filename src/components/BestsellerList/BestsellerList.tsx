@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Context } from '../../App';
 import { BestsellerCard } from '../BestsellerCard/BestsellerCard';
 import styles from '../BestsellerList/BestsellerList.module.css';
 
@@ -21,10 +23,13 @@ export const BestsellerList = ({
   display_name,
 }: IBestSellerListProps) => {
   const histoty = useHistory();
+  const { theme } = useContext(Context);
   return (
     <div className={styles.bestsellerList}>
       <div className={styles.container}>
-        <h2 className={styles.bestsellerList_title}>{display_name}</h2>
+        <h2 style={theme} className={styles.bestsellerList_title}>
+          {display_name}
+        </h2>
         <div className={styles.wrapper}>
           <BestsellerCard
             author={books[0].author}

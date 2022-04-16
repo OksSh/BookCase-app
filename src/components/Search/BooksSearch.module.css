@@ -12,6 +12,7 @@
   display: flex;
   justify-content: start;
   margin-left: 40px;
+  margin-top: 2px;
 }
 
 .booksSearch_params_text {

@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Context } from '../../App';
 import { IState } from '../../redux/store';
 import { getBestsellerBooks } from '../../services/bestsellerBookList';
 import {
@@ -11,6 +12,7 @@ import { Preloader } from '../Preloader/Preloader';
 import { Title } from '../Title/Title';
 
 export const BestsellerPage = () => {
+  const { theme } = useContext(Context);
   const dispatch = useDispatch();
   const bestsellerBooks = useSelector(
     (state: IState) => state.booksReducer.bestsellerBooks
@@ -24,13 +26,13 @@ export const BestsellerPage = () => {
   }, []);
 
   return (
-    <div className={styles.bestsellerPage}>
+    <div style={theme} className={styles.bestsellerPage}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.bestsellerPage_title}>
             <Title text='The New York Times Best Sellers' />
             {bestsellerBooks.length >= 1 ? (
-              <p>{`Published date: ${publishedDate}`}</p>
+              <p style={theme}>{`Published date: ${publishedDate}`}</p>
             ) : null}
           </div>
         </div>

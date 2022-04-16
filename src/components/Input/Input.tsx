@@ -1,4 +1,5 @@
-import { ChangeEventHandler, KeyboardEventHandler } from 'react';
+import { ChangeEventHandler, KeyboardEventHandler, useContext } from 'react';
+import { Context } from '../../App';
 import styles from '../Input/Input.module.css';
 
 interface IInputProps {
@@ -20,9 +21,10 @@ export const Input = ({
   error,
   type,
 }: IInputProps) => {
+  const { theme } = useContext(Context);
   return (
     <div className={styles.input}>
-      <label className={styles.input_label} htmlFor={name}>
+      <label style={theme} className={styles.input_label} htmlFor={name}>
         {name}
       </label>
       <input

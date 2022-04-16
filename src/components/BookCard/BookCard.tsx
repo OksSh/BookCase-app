@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Context } from '../../App';
 import styles from '../BookCard/BookCard.module.css';
 
 interface IProps {
@@ -13,9 +14,10 @@ export const BookCard = ({ title, author, id, text }: IProps) => {
   const onClick = () => {
     setIsDescription(!isDescription);
   };
+  const { theme } = useContext(Context);
 
   return (
-    <div id={id} className={styles.bookCard}>
+    <div id={id} className={styles.bookCard} style={theme}>
       <div
         onClick={onClick}
         data-description={
@@ -26,6 +28,7 @@ export const BookCard = ({ title, author, id, text }: IProps) => {
         className={styles.wrapper}
       >
         <h3
+          style={theme}
           className={
             isDescription
               ? `${styles.bookCard_title} ${styles.bookCard_hiddenText}`
@@ -35,6 +38,7 @@ export const BookCard = ({ title, author, id, text }: IProps) => {
           {title}
         </h3>
         <p
+          style={theme}
           className={
             isDescription
               ? `${styles.bookCard_author} ${styles.bookCard_hiddenText}`
@@ -44,6 +48,7 @@ export const BookCard = ({ title, author, id, text }: IProps) => {
           {author}
         </p>
         <p
+          style={theme}
           className={
             isDescription
               ? `${styles.bookCard_text} `

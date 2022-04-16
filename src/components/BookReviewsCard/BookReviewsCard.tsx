@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { Context } from '../../App';
 import styles from '../BookReviewsCard/BookReviewsCard.module.css';
 
 interface IBookReviewsCardProps {
@@ -13,13 +15,25 @@ export const BookReviewsCard = ({
   date,
   href,
 }: IBookReviewsCardProps) => {
+  const { theme } = useContext(Context);
   return (
-    <div className={styles.bookReviewsCard}>
-      <p className={styles.bookReviewsCard_author}>{author}</p>
-      <p className={styles.bookReviewsCard_text}>{text}</p>
-      <p className={styles.bookReviewsCard_date}>{date}</p>
+    <div style={theme} className={styles.bookReviewsCard}>
+      <p style={theme} className={styles.bookReviewsCard_author}>
+        {author}
+      </p>
+      <p style={theme} className={styles.bookReviewsCard_text}>
+        {text}
+      </p>
+      <p style={theme} className={styles.bookReviewsCard_date}>
+        {date}
+      </p>
       <div className={styles.bestsellerCard_linkWrapper}>
-        <a className={styles.bestsellerCard_link} target='_blank' href={href}>
+        <a
+          style={theme}
+          className={styles.bestsellerCard_link}
+          target='_blank'
+          href={href}
+        >
           Read more in the New York Times
         </a>
       </div>
