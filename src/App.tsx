@@ -26,7 +26,6 @@ function App() {
   const [isDark, setIsDark] = useState<boolean>(false);
   const changeIsDark = () => {
     setIsDark((isDark) => !isDark);
-    console.log(isDark);
   };
 
   return (

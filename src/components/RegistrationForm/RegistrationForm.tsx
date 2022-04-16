@@ -29,6 +29,10 @@ export const RegistrationForm = () => {
   const { theme } = useContext(Context);
 
   useEffect(() => {
+    setEmail('');
+    setUserName('');
+    setPassword('');
+    setConfirmPassword('');
     if (isLogin) {
       history.push('/account');
       dispatch(setUserAccount(userName, email));

@@ -3,22 +3,6 @@
     {
       "books": [
         {
-          "isbn": "9781982154943",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9781982154912.jpg",
-          "title": "THE RECOVERY AGENT",
-          "author": "Janet Evanovich",
-          "description": "When her family’s home is threatened, Gabriela Rose goes with her ex-husband to seek lost treasure in the jungles of Peru.",
-          "amazon": "https://www.amazon.com/dp/1982154918?tag=NYTBSREV-20"
-        },
-        {
-          "isbn": "9780759554344",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9780759554344.jpg",
-          "title": "RUN, ROSE, RUN",
-          "author": "Dolly Parton and James Patterson",
-          "description": "A singer-songwriter goes to Nashville seeking stardom but is followed by her dark past.",
-          "amazon": "https://www.amazon.com/dp/075955434X?tag=NYTBSREV-20"
-        },
-        {
           "isbn": "9780735219106",
           "image": "https://storage.googleapis.com/du-prd/books/images/9780735219090.jpg",
           "title": "WHERE THE CRAWDADS SING",
@@ -33,6 +17,38 @@
           "author": "Colleen Hoover",
           "description": "A battered wife raised in a violent home attempts to halt the cycle of abuse.",
           "amazon": "http://www.amazon.com/Ends-Us-Novel-Colleen-Hoover-ebook/dp/B0176M3U10?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9780593321096",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9780593321096.jpg",
+          "title": "FRENCH BRAID",
+          "author": "Anne Tyler",
+          "description": "The ups and downs of a Baltimore family from the 1950s to the pandemic present.",
+          "amazon": "https://www.amazon.com/dp/059332109X?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9780063158993",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9780063158993.jpg",
+          "title": "RECESSIONAL",
+          "author": "David Mamet",
+          "description": "The Pulitzer Prize-winning playwright lambastes liberal politics, cancel culture and other things he finds objectionable.",
+          "amazon": "https://www.amazon.com/dp/006315899X?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9780399590528",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9780399590504.jpg",
+          "title": "EDUCATED",
+          "author": "Tara Westover",
+          "description": "The daughter of survivalists, who is kept out of school, educates herself enough to leave home for university.",
+          "amazon": "https://www.amazon.com/Educated-Memoir-Tara-Westover/dp/0399590501?tag=NYTBSREV-20"
+        },
+        {
+          "isbn": "9780593321447",
+          "image": "https://storage.googleapis.com/du-prd/books/images/9780593321447.jpg",
+          "title": "SEA OF TRANQUILITY",
+          "author": "Emily St. John Mandel",
+          "description": "A detective investigating in the wilderness discovers that his actions might affect the timeline of the universe.",
+          "amazon": "https://www.amazon.com/dp/0593321448?tag=NYTBSREV-20"
         }
       ],
       "quotes": [
