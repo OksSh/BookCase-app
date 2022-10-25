@@ -1,68 +1,19 @@
 {
   "users": [
     {
-      "books": [
-        {
-          "isbn": "9780735219106",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9780735219090.jpg",
-          "title": "WHERE THE CRAWDADS SING",
-          "author": "Delia Owens",
-          "description": "In a quiet town on the North Carolina coast in 1969, a young woman who survived alone in the marsh becomes a murder suspect.",
-          "amazon": "https://www.amazon.com/Where-Crawdads-Sing-Delia-Owens/dp/0735219095?tag=NYTBSREV-20"
-        },
-        {
-          "isbn": "9781501110368",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9781501110375.jpg",
-          "title": "IT ENDS WITH US",
-          "author": "Colleen Hoover",
-          "description": "A battered wife raised in a violent home attempts to halt the cycle of abuse.",
-          "amazon": "http://www.amazon.com/Ends-Us-Novel-Colleen-Hoover-ebook/dp/B0176M3U10?tag=NYTBSREV-20"
-        },
-        {
-          "isbn": "9780593321096",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9780593321096.jpg",
-          "title": "FRENCH BRAID",
-          "author": "Anne Tyler",
-          "description": "The ups and downs of a Baltimore family from the 1950s to the pandemic present.",
-          "amazon": "https://www.amazon.com/dp/059332109X?tag=NYTBSREV-20"
-        },
-        {
-          "isbn": "9780063158993",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9780063158993.jpg",
-          "title": "RECESSIONAL",
-          "author": "David Mamet",
-          "description": "The Pulitzer Prize-winning playwright lambastes liberal politics, cancel culture and other things he finds objectionable.",
-          "amazon": "https://www.amazon.com/dp/006315899X?tag=NYTBSREV-20"
-        },
-        {
-          "isbn": "9780399590528",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9780399590504.jpg",
-          "title": "EDUCATED",
-          "author": "Tara Westover",
-          "description": "The daughter of survivalists, who is kept out of school, educates herself enough to leave home for university.",
-          "amazon": "https://www.amazon.com/Educated-Memoir-Tara-Westover/dp/0399590501?tag=NYTBSREV-20"
-        },
-        {
-          "isbn": "9780593321447",
-          "image": "https://storage.googleapis.com/du-prd/books/images/9780593321447.jpg",
-          "title": "SEA OF TRANQUILITY",
-          "author": "Emily St. John Mandel",
-          "description": "A detective investigating in the wilderness discovers that his actions might affect the timeline of the universe.",
-          "amazon": "https://www.amazon.com/dp/0593321448?tag=NYTBSREV-20"
-        }
-      ],
+      "books": [],
       "quotes": [
         {
           "title": "Alice's Adventures in Wonderland",
           "author": " ‎Lewis Carroll",
           "text": "My dear, here we must run as fast as we can, just to stay in place. And if you wish to go anywhere you must run twice as fast as that.",
-          "id": "id655813fa12c6f"
+          "id": "idb33c44d638fd1"
         },
         {
           "title": "The Great Gatsby",
           "author": "F. Scott Fitzgerald",
           "text": "Whenever you feel like criticizing any one,» he told me, «just remember that all the people in this world haven’t had the advantages that you’ve had.",
-          "id": "id77c94ad17b31e"
+          "id": "ide96df79a85bfc"
         }
       ],
       "userName": "OksSh",
