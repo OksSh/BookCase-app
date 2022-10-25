@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Context } from '../../App';
 import styles from '../HomePage/HomePage.module.css';
+import homeImage from '../HomePage/home-page.jpg';
 
 export const HomePage = () => {
   const { theme, isDark } = useContext(Context);
@@ -9,7 +10,8 @@ export const HomePage = () => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <div
-            style={{ background: `url(/assets/img/home-page.jpg)` }}
+            // style={{ background: `url(/assets/img/home-page.jpg)` }}
+            style={{ background: `url(${homeImage})` }}
             className={styles.homePage_image}
           ></div>
           <div

@@ -1,5 +1,6 @@
 {
   "name": "simple-food-app",
+  "homepage": "https://okssh.github.io/BookCase-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
